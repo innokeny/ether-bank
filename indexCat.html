@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles1.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxs-bank'></i>
+            <div class="logo_name">Bether</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="indexCat.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Catalog</span>
+                </a>
+                <span class="tooltip">Catalog</span>
+            </li>
+            <li>
+                <a href="indexShC.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="links_name">Shopping cart</span>
+                </a>
+                <span class="tooltip">Shopping cart</span>
+            </li>
+            <li class="profile">
+                <div class="profile-details">
+                    <!--<img src="profile.jpg" alt="profileImg">-->
+                    <div class="name_job">
+                        <div class="name">Ivan Ivanov</div>
+                        <div class="job">Customer</div>
+                    </div>
+                    <a href="index2.php" class="btnLogOut">
+                        <i class='bx bx-log-out' id="log_out"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <section class="section">
+        <div class="dashboard">
+            <h2 class="title">CATALOG</h2>
+            <div class="date">
+                <input type="date">
+            </div>
+            <div class="insights">
+                <div class="sales">
+                    <h2>BetherCard</h2>
+                    <div>pic</div>
+                    <h3>3.3$</h3>
+                    <button>Add</button>
+                </div>
+                <div class="sales">
+                    <h2>BetherCard</h2>
+                    <div>pic</div>
+                    <h3>3.3$</h3>
+                    <button>Add</button>
+                </div>
+                <div class="sales">
+                    <h2>BetherCard</h2>
+                    <div>pic</div>
+                    <h3>3.3$</h3>
+                    <button>Add</button>
+                </div>
+                <div class="sales">
+                    <h2>BetherCard</h2>
+                    <div>pic</div>
+                    <h3>3.3$</h3>
+                    <button>Add</button>
+                </div>
+                <div class="sales">
+                    <h2>BetherCard</h2>
+                    <div>pic</div>
+                    <h3>3.3$</h3>
+                    <button>Add</button>
+                </div>
+                <div class="sales">
+                    <h2>BetherCard</h2>
+                    <div>pic</div>
+                    <h3>3.3$</h3>
+                    <button>Add</button>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange();//calling the function(optional)
+        });
+
+        // following are the code to change sidebar button(optional)
+        function menuBtnChange() {
+            if (sidebar.classList.contains("open")) {
+                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+            } else {
+                closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+            }
+        }
+    </script>
+</body>
+
+</html>
