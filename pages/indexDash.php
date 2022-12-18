@@ -1,5 +1,5 @@
 <?php
-    require_once 'blocks/connect.php';
+    require_once '../blocks/connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -7,14 +7,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/styles1.css">
+    <link rel="stylesheet" href="../css/styles1.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <?php include ("blocks/html.php");?>
+    <?php include ("../blocks/html.php");?>
 
     <section class="section">
         <div class="dashboard">
@@ -54,15 +54,17 @@
                     </div>
                 </div>
                 <div class="last_customer">
-                    <form method="post" action="validation-form/blacklist.php">
+                    <form method="post" action="../validation-form/blacklist.php">
                         <h2>CUSTOMER</h2>
                         <select id="optioncustomer" name="taskOption">
-                            <option>...</option>
+                            <option value="0">...</option>
                             <?php
-                                include ("blocks/infoCustomer.php");
+                                include ("../blocks/infoCustomer.php");
+                                $val = 0;
                                 foreach ($infoCustomer as $Customer) {
+                                    $val++;
                                     ?>
-                                        <option value="<?= $Customer[0] ?>"><?= $Customer[3] ?></option>
+                                        <option value='{"<?= $Customer[0] ?>","<?= $val ?>"}'><?= $Customer[3] ?></option>
                                     <?php
                                 }
                             ?>
@@ -77,10 +79,12 @@
                             </div>
                         </div>
                     </form>
-                    <div class="mf">
-                        <textarea class="message_field" >...</textarea>
-                        <button>Send message to email</button>
-                    </div>
+                    <form method="post" action="../validation-form/sendemail.php">
+                        <div class="mf">
+                            <textarea name="mes_area" class="message_field" placeholder="Enter a message" required></textarea>
+                            <button id="message" name="message" type="submit">Send message to email</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="promo_code">
                     <h2>PROMO CODE</h2>
@@ -114,16 +118,26 @@
 
 
     <script>
-        <?php include ("blocks/infoCustomer.php");?>
+        <?php include ("../blocks/infoCustomer.php");?>
         var infoCustomer = <?php echo json_encode($infoCustomer) ?>;
 
-        document.addEventListener("change", function() {
-            document.getElementById('fullname').innerHTML = infoCustomer[optioncustomer.value-1][3];
-            document.getElementById('number').innerHTML = infoCustomer[optioncustomer.value-1][4];
-            document.getElementById('email').innerHTML = infoCustomer[optioncustomer.value-1][1];
-        });
-        
+        console.log(infoCustomer);
 
+        document.addEventListener("change", function() {
+            console.log(optioncustomer.value[6]);
+            if(optioncustomer.value == 0){
+                document.getElementById('fullname').innerHTML = 'Select a customer';
+                document.getElementById('number').innerHTML = 'null';
+                document.getElementById('email').innerHTML = '';
+            } else {
+                document.getElementById('fullname').innerHTML = infoCustomer[optioncustomer.value[6]-1][3];
+                document.getElementById('number').innerHTML = infoCustomer[optioncustomer.value[6]-1][4];
+                document.getElementById('email').innerHTML = infoCustomer[optioncustomer.value[6]-1][1];
+
+                document.getElementById("message").value = infoCustomer[optioncustomer.value[6]-1][1];
+            }
+            console.log(document.getElementById("message").value);
+        });
     </script>
 </body>
 

@@ -1,5 +1,5 @@
 <?php
-    require_once 'blocks/connect.php';
+    require_once '../blocks/connect.php';
 ?>
 
 
@@ -8,14 +8,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/styles1.css">
+    <link rel="stylesheet" href="../css/styles1.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <?php include ("blocks/html.php");?>
+    <?php include ("../blocks/html.php");?>
 
     <section class="section">
         <div class="dashboard">
@@ -73,7 +73,7 @@
     </section>
 
     <script>
-        <?php include ("blocks/infoCustomer.php");?>
+        <?php include ("../blocks/infoCustomer.php");?>
 
         var infoCustomer = <?php echo json_encode($infoCustomer) ?>;
         var trans = <?php echo json_encode($trans) ?>;
@@ -105,7 +105,7 @@
             }
         });
         $(".confirm").click(function() {
-            location.href = "validation-form/confirm.php?id=" + the_id;
+            location.href = "../validation-form/confirm.php?id=" + the_id;
         });
     </script>
 </body>

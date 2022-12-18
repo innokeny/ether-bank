@@ -20,6 +20,6 @@
 
     $mysql->close();
 
-    header('Location: ../indexDash.php');
+    header('Location: ../pages/indexDash.php');
 
 ?>
