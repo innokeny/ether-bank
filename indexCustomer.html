@@ -4,12 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-        <!-- CSS -->
         <link href="css/styles2.css"  rel="stylesheet">
-                
-        <!-- Boxicons CSS -->
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
                         
     </head>
@@ -18,13 +13,13 @@
             <div class="form login">
                 <div class="form-content">
                     <header>Login</header>
-                    <form action="validation-form/auth.php" method="post"> <!--id="auth-form"-->
+                    <form action="validation-form/auth_customer.php" method="post">
                         <div class="field input-field">
-                            <input type="email" id="email" placeholder="Email" class="input" name="email-auth" > <!--required>-->
+                            <input type="email" id="email" placeholder="Email" class="input" name="email-auth" required>
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" id="password" placeholder="Password" class="password" name="pass-auth"> <!--required>-->
+                            <input type="password" id="password" placeholder="Password" class="password" name="pass-auth" required>
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
 
@@ -48,8 +43,7 @@
             <div class="form signup">
                 <div class="form-content">
                     <header>Signup</header>
-                    <form action="validation-form/check.php" method="post">
-                        <div style="color: red;" name="err_signup"></div>
+                    <form action="validation-form/reg_customer.php" method="post">
                         <div class="field input-field">
                             <input type="email" placeholder="Email" class="input" name="email">
                         </div>
@@ -60,8 +54,11 @@
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" placeholder="Confirm password" class="password" name="cpassword">
-                            <i class='bx bx-hide eye-icon'></i>
+                            <input placeholder="Enter your full name" class="input" name="fullname">
+                        </div>
+
+                        <div class="field input-field">
+                            <input placeholder="Enter your phone number" class="input" name="phonenumber">
                         </div>
 
                         <div class="field button-field">
@@ -75,6 +72,6 @@
                 </div>
             </div>  
         </section>
-        <script src="js/auth1.js"></script> <!--src="auth1.js"-->
+        <script src="js/auth1.js"></script>
     </body>
 </html>

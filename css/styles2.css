@@ -85,16 +85,6 @@ form{
     transition: all 0.3s ease;
     cursor: pointer;
 }
-/*.field h3{
-    color: #fff;
-    background-color: #3a3a3a;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border-radius: 1.2rem;
-    text-align: center;
-    height: 50px;
-    padding-top: 10px;
-}*/
 .field button:hover{
     background-color: #1e1e1e;
 }

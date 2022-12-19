@@ -8,7 +8,7 @@
 
     require "../blocks/connects.php";
 
-    $result = $mysql->query("SELECT * FROM `users` WHERE `email` = '$email' AND `pass` = '$password'");
+    $result = $mysql->query("SELECT * FROM `user_customer` WHERE `email` = '$email' AND `password` = '$password'");
     $user = $result->fetch_assoc();
 
     if(count($user) == 0) { 
@@ -16,10 +16,10 @@
         exit();
     }
 
-    setcookie('user', $user['email'], time() + 300, "/");
+    setcookie('user', $user['id'], time() + 3600, "/");
 
     $mysql->close();
 
-    header('Location: ../pages/indexDash.php');
+    header('Location: ../pages/indexCat.php');
 
 ?>

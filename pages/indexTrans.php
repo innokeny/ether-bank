@@ -1,21 +1,4 @@
-<?php
-    require_once '../blocks/connect.php';
-?>
-
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/styles1.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-</head>
-
-<body>
-    <?php include ("../blocks/html.php");?>
+<?php include ("../blocks/html_manager.php");?>
 
     <section class="section">
         <div class="dashboard">
@@ -32,9 +15,6 @@
                     </thead>
                     <tbody>
                         <?php
-                            $trans = mysqli_query($connect, "SELECT * FROM `transactions`");
-                            $trans = mysqli_fetch_all($trans);
-
                             foreach ($trans as $product) {
                                 ?>
                                     <tr>
@@ -73,8 +53,6 @@
     </section>
 
     <script>
-        <?php include ("../blocks/infoCustomer.php");?>
-
         var infoCustomer = <?php echo json_encode($infoCustomer) ?>;
         var trans = <?php echo json_encode($trans) ?>;
 

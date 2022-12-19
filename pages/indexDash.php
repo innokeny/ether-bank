@@ -1,20 +1,4 @@
-<?php
-    require_once '../blocks/connect.php';
-?>
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/styles1.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-</head>
-
-<body>
-    <?php include ("../blocks/html.php");?>
+<?php include ("../blocks/html_manager.php");?>
 
     <section class="section">
         <div class="dashboard">
@@ -59,7 +43,6 @@
                         <select id="optioncustomer" name="taskOption">
                             <option value="0">...</option>
                             <?php
-                                include ("../blocks/infoCustomer.php");
                                 $val = 0;
                                 foreach ($infoCustomer as $Customer) {
                                     $val++;
@@ -92,7 +75,12 @@
                         <div class="productname">
                             <h4>Product name</h4>
                             <select class="pname_field">
-                                <option>Bether card</option>
+                                <option>Debit card</option>
+                                <option>Insurance</option>
+                                <option>Pro account</option>
+                                <option>Access to the market</option>
+                                <option>Аccess to the stock exchange</option>
+                                <option>Bank deposit box</option>
                             </select>
                         </div>
                         <div class="percent">
@@ -118,11 +106,6 @@
 
 
     <script>
-        <?php include ("../blocks/infoCustomer.php");?>
-        var infoCustomer = <?php echo json_encode($infoCustomer) ?>;
-
-        console.log(infoCustomer);
-
         document.addEventListener("change", function() {
             console.log(optioncustomer.value[6]);
             if(optioncustomer.value == 0){
@@ -138,6 +121,8 @@
             }
             console.log(document.getElementById("message").value);
         });
+
+
     </script>
 </body>
 

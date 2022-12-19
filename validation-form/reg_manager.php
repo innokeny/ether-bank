@@ -3,12 +3,12 @@
     if (isset($data['do_signup'])) {
 
         $erorrs = array();
-        if (trim($data['email']) == ''){
-            $errors[] = 'Enter your email!';
+        if (trim($data['email']) == '' || mb_strlen(trim($data['email'])) < 5 || mb_strlen(trim($data['email'])) > 90){
+            $errors[] = 'EMAIL ERROR';
         }
 
-        if ($data['password'] == ''){
-            $errors[] = 'Enter your password!';
+        if ($data['password'] == '' || mb_strlen($data['password']) < 3 || mb_strlen($data['password']) > 50){
+            $errors[] = 'PASSWORD ERROR';
         }
 
         if ($data['cpassword'] != $data['password']){
@@ -16,7 +16,6 @@
         }
         
         if (empty($errors)) {
-
             $email = filter_var(trim($_POST['email']),
             FILTER_SANITIZE_STRING);
             $password = filter_var(trim($_POST['password']),
@@ -30,25 +29,15 @@
             $mysql->query("INSERT INTO `users` (`email`, `pass`) VALUES('$email', '$password')");
 
             $mysql->close();
-            header('Location: ../index2.php');
+            header('Location: ../indexManager.html');
         } else {
-            header('Location: ../index2.php');
-            //$data['err_signup'] = '.array_shift($errors).';
+            $err = array_shift($errors);
+            echo '<script language="javascript">';
+            echo 'alert("';
+            echo $err;
+            echo '")';
+            echo '</script>';
         }
-
-        /*if (mb_strlen($email) < 5 || mb_strlen($email) > 90){
-            echo "ERROR";
-            exit();
-        } else if (mb_strlen($password) < 3 || mb_strlen($password) > 50){
-            echo "ERROR";
-            exit();
-        } else if (mb_strlen($cpassword) < 3 || mb_strlen($cpassword) > 50){
-            echo "ERROR";
-            exit();
-        } else if ($cpassword != $password){
-            echo "ERROR";
-            exit();
-        }*/
     }
 
 ?>
