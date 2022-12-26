@@ -14,7 +14,7 @@
     console.log(infoCust);
 
     for (var i = 0; i<infoCust.length; i++){
-        if (infoCust[i][1] = x){
+        if (infoCust[i][0] == x){
             var name = infoCust[i][3];
             document.getElementById('name').innerHTML = name;
         }
