@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 26 2022 г., 12:08
+-- Время создания: Дек 26 2022 г., 19:54
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -86,9 +86,6 @@ CREATE TABLE `promocode` (
 
 INSERT INTO `promocode` (`id`, `product_name`, `percent`, `promocode`) VALUES
 (2, 'Insurance', '15', 'dd40c1d3f69694bca93e05700ef429c7'),
-(3, 'Insurance', '15', '9c45da13ce38b062c639c6ef075cf149'),
-(4, 'Insurance', '15', 'f25224a94bc0f050a1168e5331125499'),
-(5, 'Insurance', '15', '5de268afd9a6f49669fc22a5aeda10cc'),
 (6, 'Insurance', '15', 'df5882e56181aff7e82cb80552514d7f'),
 (7, 'Pro account', '15', 'dc4828d5c8a2c0186a4e46bf2d8fdbf4'),
 (9, 'Insurance', '15', 'df8dcd543e780538905892d6c10c9d81'),
@@ -98,9 +95,10 @@ INSERT INTO `promocode` (`id`, `product_name`, `percent`, `promocode`) VALUES
 (14, 'Debit card', '20', 'a280a7a44d04568c49eed3458133b731'),
 (16, 'Аccess to the stock exchange', '20', '707e89308e76ecd8af752d42dd7383a7'),
 (17, 'Access to the market', '20', 'cdd4ee73d697751233abf269adb1fdf7'),
-(20, '', '10', '45fb3730ef0edb36d6bf3201a689eca9'),
 (21, 'Bank deposit box', '10', '44f03eb4108c421728786d9ef32ec5f0'),
-(22, 'Аccess to the stock exchange', '10', '1c9c38db50e87a897055d3f616152d25');
+(22, 'Аccess to the stock exchange', '10', '1c9c38db50e87a897055d3f616152d25'),
+(23, 'Insurance', '15', 'a20b44b4fac04a85efd5a6b0f8d31cf8'),
+(24, 'Bank deposit box', '15', '360ad5513bcdbd20807deae8606a7ec4');
 
 -- --------------------------------------------------------
 
@@ -124,14 +122,15 @@ CREATE TABLE `transactions` (
 
 INSERT INTO `transactions` (`id`, `product_name`, `status`, `order_date`, `payment`, `payment_date`, `customer_id`) VALUES
 (36, 'Debit card', 'Confirmed', '2022-12-20', 'Paid', '2022-12-20', 11),
-(40, 'Insurance', 'Pending', '2022-12-20', 'Not paid', NULL, 11),
+(40, 'Insurance', 'Pending', '2022-12-20', 'Paid', '2022-12-26', 11),
 (41, 'Debit card', 'Confirmed', '2022-12-26', 'Paid', '2022-12-26', 15),
 (42, 'Access to the market', 'Confirmed', '2022-12-26', 'Paid', '2022-12-26', 15),
 (43, 'Bank deposit box', 'Pending', '2022-12-26', 'Not paid', NULL, 15),
 (44, 'Аccess to the stock exchange', 'Pending', '2022-12-26', 'Not paid', NULL, 15),
 (45, 'Access to the market', 'Confirmed', '2022-12-26', 'Paid', '2022-12-26', 12),
 (46, 'Pro account', 'Pending', '2022-12-26', 'Not paid', NULL, 12),
-(47, 'Insurance', 'Pending', '2022-12-26', 'Paid', '2022-12-26', 12);
+(47, 'Insurance', 'Pending', '2022-12-26', 'Paid', '2022-12-26', 12),
+(48, 'Аccess to the stock exchange', 'Pending', '2022-12-26', 'Not paid', NULL, 11);
 
 -- --------------------------------------------------------
 
@@ -232,13 +231,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT для таблицы `promocode`
 --
 ALTER TABLE `promocode`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT для таблицы `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
