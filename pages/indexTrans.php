@@ -18,7 +18,7 @@
                             foreach ($trans as $product) {
                                 ?>
                                     <tr>
-                                        <td><input class="check" type="radio" id="<?= $product[0] ?>" name="group1"></td>
+                                        <td><input style="accent-color: black;" class="check" type="radio" id="<?= $product[0] ?>" name="group1"></td>
                                         <td><?= $product[0] ?></td>
                                         <td><?= $product[1] ?></td>
                                         <td><?= $product[2] ?></td>

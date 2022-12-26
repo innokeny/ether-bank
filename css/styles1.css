@@ -220,32 +220,11 @@
     display: none;
   }
 }
-.section .dashboard .date{
-  display: block;
-  margin-right: auto;
-  width: 100%;
-  background: #fff;
-  margin-top: 1rem;
-  padding: 0.5rem 1.6rem;
-  margin-left: auto;
-  width: 100%;
-  background: #fff;
-  gap: 2rem;
-  margin-bottom: 0.7rem;
-  border-radius: 1.2rem;
-  box-shadow: 0 0.5rem 3rem rgba(26, 27, 29, 0.18);
-}
-.section .dashboard .date input[type='date']{
-  background: transparent;
-  color: #363949;
-  display: block;
-  margin-right: auto;
-}
 .section .dashboard .insights{
   display: grid;
   margin-left: auto;
   margin-right: auto;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.6rem;
   width: 100%;
 }
@@ -259,63 +238,6 @@
 }
 .section .dashboard .insights > div:hover{
   box-shadow: none;
-}
-.section .dashboard .insights .sales .graph i{
-  background: rgb(0, 0, 0);
-  padding: 0.5rem;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 2rem; 
-}
-.section .dashboard .insights .sales .graph{
-  background: #fff;
-  padding: 1.8rem;
-  border-radius: 2rem;
-  margin-top: 1rem;
-  box-shadow: 0 2rem 3rem rgba(26, 27, 29, 0.18);
-  transition: all 300ms ease;
-}
-.section .dashboard .insights  > div .middle{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.section .dashboard .insights .sales .graph h3{
-  margin: 1rem 0 0.6rem;
-  font-size: 1rem;
-}
-.section .dashboard .insights .sales .graph .progress{
-  position: relative;
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-}
-.section .dashboard .insights .sales .graph svg{
-  width: 7rem;
-  height: 7rem;
-}
-.section .dashboard .insights .sales .graph svg circle{
-  fill: none;
-  stroke: #6e6e6e;
-  stroke-width: 14;
-  stroke-linecap: round;
-  transform: translate(5px, 5px);
-  stroke-dasharray: 110;
-  stroke-dashoffset: 92;
-}
-.section .dashboard .insights .sales .graph .progress .number{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.section .dashboard .insights .sales .graph small{
-  margin-top: 1.3rem;
-  display: block;
 }
 .section .dashboard .recent-orders h2{
   margin-bottom: 0.8rem;
@@ -372,41 +294,6 @@
 }
 .section .dashboard .recent-orders .details:hover{
   box-shadow: none;
-}
-.section .dashboard .insights .sales .item{
-  margin-top: 1rem;
-  display: grid;
-  margin-left: auto;
-  margin-right: auto;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.6rem;
-  width: 100%;
-  background: #fff;
-  align-items: center;
-  margin-bottom: 0.7rem;
-  padding: 1.4rem 1.8rem;
-  border-radius: 1.2rem;
-  box-shadow: 0 2rem 3rem rgba(26, 27, 29, 0.18);
-  transition: all 300ms ease;
-}
-.section .dashboard .insights .sales .item h2{
-  margin-bottom: 0.8rem;
-}
-.success{
-  color: #74bf61;
-}
-.danger{
-  color:#803939
-}
-.section .dashboard .insights .sales .item i{
-  font-size: 2rem;
-}
-.section .dashboard .insights .sales .item .right{
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  margin-right: 1rem;
-  width: 100%;
 }
 .section .dashboard .last_customer .customer{
   display: grid;

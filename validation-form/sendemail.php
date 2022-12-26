@@ -1,7 +1,7 @@
 <?php
     require_once '../blocks/connect.php';
     $to = trim($_POST['message']);
-    $from = "irok673@gmail.com";
+    $from = $_COOKIE['user'];
 
     $subject = "BETHER Client Manager";
 

@@ -14,7 +14,7 @@
                             ?>
                                 <div class="sales">
                                     <h2><?= $Product[1] ?></h2>
-                                    <div>pic</div>
+                                    
                                     <h3><?= $Product[2] ?> eth</h3>
                                     <button type="submit" name="add_btn" value="<?= $Product[0]-1 ?>">
                                         Add

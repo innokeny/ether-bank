@@ -4,64 +4,30 @@
         <div class="dashboard">
             <h2 class="title">DASHBOARD</h2>
             <div class="insights">
-                <div class="sales">
-                    <h2>ANALYTICS</h2>
-                    <div class="item">
-                        <i class='bx bxs-user'></i>
-                        <div class="right">
-                            <div class="info">
-                                <h3>NEW</h3>
-                                <h3>CUSTOMERS</h3>
-                                <small class="text-muted">Last 24 Hours</small>
-                            </div>
-                            <h5 class="success">+21%</h5>
-                            <h3>542</h3>
-                        </div>
-                    </div>
-                    <div class="graph">
-                        <i class='bx bx-bar-chart-alt-2'></i>
-                        <div class="middle">
-                            <div class="left">
-                                <h3>Total Sales</h3>
-                                <h1>$25,024</h1>
-                            </div>
-                            <div class="progress">
-                                <svg>
-                                    <circle cx='38' cy='38' r='36'></circle>
-                                </svg>
-                                <div class="number">
-                                    <p>81%</p>
-                                </div>
-                            </div>
-                        </div>
-                        <small class="text-muted">Last 24 Hours</small>
-                    </div>
-                </div>
+
                 <div class="last_customer">
-                    <form method="post" action="../validation-form/blacklist.php">
-                        <h2>CUSTOMER</h2>
-                        <select id="optioncustomer" name="taskOption">
-                            <option value="0">...</option>
-                            <?php
-                                $val = 0;
-                                foreach ($infoCustomer as $Customer) {
-                                    $val++;
-                                    ?>
-                                        <option value='{"<?= $Customer[0] ?>","<?= $val ?>"}'><?= $Customer[3] ?></option>
-                                    <?php
-                                }
-                            ?>
-                        </select>
-                        <div class="customer">
-                            <i class='bx bxs-face' ></i>
-                            <div class="info_customer">
-                                <h3 id="fullname" class="fullname">Select a customer</h3>
-                                <div id="number" class="number">null</div>
-                                <div id="email" class="email"></div>
-                                <button type="submit">Add to Blacklist</button>
-                            </div>
+                    <h2>CUSTOMER</h2>
+                    <select id="optioncustomer" name="taskOption">
+                        <option value="0">...</option>
+                        <?php
+                            $val = 0;
+                            foreach ($infoCustomer as $Customer) {
+                                $val++;
+                                ?>
+                                    <option value="<?= $val ?> <?= $Customer[0] ?>"><?= $Customer[3] ?></option>
+                                <?php
+                            }
+                        ?>
+                    </select>
+                    <div class="customer">
+                        <i class='bx bxs-face' ></i>
+                        <div class="info_customer">
+                            <h3 id="fullname" class="fullname"></h3>
+                            <div id="number" class="number"></div>
+                            <div id="email" class="email"></div>
+                            <button id="blacklist">Add to Blacklist</button>
                         </div>
-                    </form>
+                    </div>
                     <form method="post" action="../validation-form/sendemail.php">
                         <div class="mf">
                             <textarea name="mes_area" class="message_field" placeholder="Enter a message" required></textarea>
@@ -74,28 +40,32 @@
                     <div class="pc">
                         <div class="productname">
                             <h4>Product name</h4>
-                            <select class="pname_field">
-                                <option>Debit card</option>
-                                <option>Insurance</option>
-                                <option>Pro account</option>
-                                <option>Access to the market</option>
-                                <option>Аccess to the stock exchange</option>
-                                <option>Bank deposit box</option>
+                            <select id="optionproduct" class="pname_field">
+                            <?php
+                                include ("../blocks/infoProduct.php");
+                                $val = 0;
+                                foreach ($infoProduct as $Product) {
+                                    $val++;
+                                    ?>
+                                        <option value="<?= $val ?>"><?= $Product[1] ?></option>
+                                    <?php
+                                }
+                            ?>
                             </select>
                         </div>
                         <div class="percent">
                             <h4>Discount amount</h4>
-                            <select class="damount_field">
-                                <option>10%</option>
-                                <option>15%</option>
-                                <option>20%</option>
+                            <select id="optionpercent" class="damount_field">
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                                <option value="20">20%</option>
                             </select>
                         </div>
-                        <button>Generate</button>
+                        <button id="generate">Generate</button>
                     </div>
                     <div class="pf">
                         <i class='bx bx-barcode'></i>
-                        <textarea class="promo_field" > </textarea>
+                        <textarea id="promo_field" class="promo_field" > </textarea>
                     </div>
                     
                 </div>
@@ -104,24 +74,64 @@
         </div>
     </section>
 
-
+    <?php require ("../blocks/get_promo.php"); ?>
     <script>
-        document.addEventListener("change", function() {
-            console.log(optioncustomer.value[6]);
+        function arr_val(line){
+            array = line.trim().split(" ");
+            for (var i in array) {
+                array[i] = Number(array[i]);
+            }
+            return array
+        }        
+        var op_cust = [];
+
+        var infoCustomer = <?php echo json_encode($infoCustomer) ?>;
+        var infoProduct = <?php echo json_encode($infoProduct) ?>;
+
+        let customer = document.querySelector("#optioncustomer");
+        customer.addEventListener("change", function() {
+            op_cust = arr_val(optioncustomer.value);
+            console.log(op_cust);
             if(optioncustomer.value == 0){
                 document.getElementById('fullname').innerHTML = 'Select a customer';
                 document.getElementById('number').innerHTML = 'null';
                 document.getElementById('email').innerHTML = '';
             } else {
-                document.getElementById('fullname').innerHTML = infoCustomer[optioncustomer.value[6]-1][3];
-                document.getElementById('number').innerHTML = infoCustomer[optioncustomer.value[6]-1][4];
-                document.getElementById('email').innerHTML = infoCustomer[optioncustomer.value[6]-1][1];
+                document.getElementById('fullname').innerHTML = infoCustomer[op_cust[0]-1][3];
+                document.getElementById('number').innerHTML = infoCustomer[op_cust[0]-1][4];
+                document.getElementById('email').innerHTML = infoCustomer[op_cust[0]-1][1];
 
-                document.getElementById("message").value = infoCustomer[optioncustomer.value[6]-1][1];
+                document.getElementById("message").value = infoCustomer[op_cust[0]-1][1];
             }
             console.log(document.getElementById("message").value);
         });
 
+        let blist = document.querySelector("#blacklist");
+        blist.addEventListener("click", function() {
+            console.log(op_cust[1]);
+            location.href = "../validation-form/blacklist.php?option=" + op_cust[1];
+        });
+
+        var per_val = 0;
+        var prod = '';
+
+        let product = document.querySelector("#optionproduct");
+        product.addEventListener("click", function() {
+            prod = infoProduct[optionproduct.value-1][1];
+            console.log(prod);
+        });
+
+        let percent = document.querySelector("#optionpercent");
+        percent.addEventListener("click", function() {
+            console.log(optionpercent.value);
+            per_val = optionpercent.value;
+        });
+        
+        let gen = document.querySelector("#generate");
+        gen.addEventListener("click", function() {
+            console.log(prod, per_val);
+            location.href = `../validation-form/generate_promo.php?product=${prod}&percent=${per_val}`;
+        });
 
     </script>
 </body>
