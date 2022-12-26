@@ -2,7 +2,6 @@
     require_once '../blocks/connect.php';
 
     $id = $_GET['option'];
-    echo $id;
 
     mysqli_query($connect, "INSERT INTO `blacklist` (`id`, `email`, `password`, `full_name`, `phone_number`) 
                             SELECT *

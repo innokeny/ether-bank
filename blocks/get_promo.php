@@ -7,7 +7,6 @@
             return null;
     }
     var x = get_cookie ("promo");
-    console.log(x);
 
     document.getElementById('promo_field').innerHTML = x;
 </script>

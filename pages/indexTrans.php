@@ -29,11 +29,11 @@
                     </tbody>
                 </table>
                 <div class="details">
-                    <h4>CUSTOMER DATA:</h4>
+                    <h4>DETAILED INFORMATION:</h4>
                     <div class="custd">
                         <div class="custd1">
-                            <div id="field_name">Select a transaction</div>
-                            <div id="custNumber">null</div>
+                            <div id="field_name"></div>
+                            <div id="custNumber"></div>
                             <div id="custEmail"></div>
                         </div>
                         <div class="custd2">

@@ -7,11 +7,8 @@
             return null;
     }
     var x = get_cookie ("user");
-    console.log(x);
 
     var infoCust = <?php echo json_encode($infoCustomer) ?>;
-
-    console.log(infoCust);
 
     for (var i = 0; i<infoCust.length; i++){
         if (infoCust[i][0] == x){

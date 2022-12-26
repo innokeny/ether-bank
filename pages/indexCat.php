@@ -31,14 +31,10 @@
 
     <script>
         var infoProduct = <?php echo json_encode($infoProduct) ?>;
-        console.log(infoProduct);
 
         $("button").click(function() {
             var fired_button = $(this).val();
-            console.log(fired_button);
             var name_product = infoProduct[fired_button][1];
-            console.log(name_product);
-            console.log(name);
         });
 
         

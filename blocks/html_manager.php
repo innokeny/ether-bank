@@ -42,8 +42,7 @@
             <li class="profile">
                 <div class="profile-details">
                     <div class="name_job">
-                        <div class="name" id="name"></div>
-                        <div class="job">Senior Client Manager</div>
+                        <div class="name" id="name">Senior Client Manager</div>
                     </div>
                     <a href="../blocks/exit.php" class="btnLogOut">
                         <i class='bx bx-log-out' id="log_out"></i>
@@ -52,7 +51,7 @@
             </li>
         </ul>
     </div>
-    <?php require ("../blocks/get_name.php"); ?>
+
     <script>
         let sidebar = document.querySelector(".sidebar");
         let closeBtn = document.querySelector("#btn");

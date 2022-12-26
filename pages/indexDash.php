@@ -25,7 +25,7 @@
                             <h3 id="fullname" class="fullname"></h3>
                             <div id="number" class="number"></div>
                             <div id="email" class="email"></div>
-                            <button id="blacklist">Add to Blacklist</button>
+                            <button id="blacklist" style="visibility: hidden">Add to Blacklist</button>
                         </div>
                     </div>
                     <form method="post" action="../validation-form/sendemail.php">
@@ -91,24 +91,27 @@
         let customer = document.querySelector("#optioncustomer");
         customer.addEventListener("change", function() {
             op_cust = arr_val(optioncustomer.value);
-            console.log(op_cust);
             if(optioncustomer.value == 0){
-                document.getElementById('fullname').innerHTML = 'Select a customer';
-                document.getElementById('number').innerHTML = 'null';
+                document.getElementById('blacklist').style.visibility = 'hidden';
+                document.getElementById('blacklist').disabled = true;
+
+                document.getElementById('fullname').innerHTML = '';
+                document.getElementById('number').innerHTML = '';
                 document.getElementById('email').innerHTML = '';
             } else {
                 document.getElementById('fullname').innerHTML = infoCustomer[op_cust[0]-1][3];
                 document.getElementById('number').innerHTML = infoCustomer[op_cust[0]-1][4];
                 document.getElementById('email').innerHTML = infoCustomer[op_cust[0]-1][1];
 
+                document.getElementById('blacklist').disabled = false;
+                document.getElementById('blacklist').style.visibility = 'visible';
+
                 document.getElementById("message").value = infoCustomer[op_cust[0]-1][1];
             }
-            console.log(document.getElementById("message").value);
         });
 
         let blist = document.querySelector("#blacklist");
         blist.addEventListener("click", function() {
-            console.log(op_cust[1]);
             location.href = "../validation-form/blacklist.php?option=" + op_cust[1];
         });
 
@@ -118,18 +121,15 @@
         let product = document.querySelector("#optionproduct");
         product.addEventListener("click", function() {
             prod = infoProduct[optionproduct.value-1][1];
-            console.log(prod);
         });
 
         let percent = document.querySelector("#optionpercent");
         percent.addEventListener("click", function() {
-            console.log(optionpercent.value);
             per_val = optionpercent.value;
         });
         
         let gen = document.querySelector("#generate");
         gen.addEventListener("click", function() {
-            console.log(prod, per_val);
             location.href = `../validation-form/generate_promo.php?product=${prod}&percent=${per_val}`;
         });
 
